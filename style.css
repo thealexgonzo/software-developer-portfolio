@@ -1,3 +1,7 @@
+img {
+    max-width: 100%;
+    height: auto;
+}
 
 body {
   font-family: "Inter", sans-serif;
@@ -6,12 +10,14 @@ body {
   color: #e2e8f0;
   background-color: #0f172a;
   margin: 0;
+  overflow-x: hidden;
 }
 
 main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 40px;
+    position: relative;
 }
 
 main::before {
@@ -32,49 +38,8 @@ main::before {
     z-index: -1;
 }
 
-footer {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 40px;
-}
-
-#hero {
-    max-width: 700px;
-    margin-top: 60px;
-    position: relative;
-}
-
-#hero h1 {
-    margin-bottom: 10px;
-}
-
-#hero h2 {
-    font-size: 50px;
-    font-weight: lighter;
-    margin: 0 0 20px 0;
-    padding: 0;
-}
-
-#hero p:first-of-type {
-    opacity: 0.8;
-}
-
-#title {
-    font-size: 80px;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
-
-#title::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: #38bdf8;
-    margin-top: 12px;
-    border-radius: 2px;
+.hero_buttons .button {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
 }
 
 .button{
@@ -89,14 +54,52 @@ footer {
 }
 
 .button:hover{
-    /* transform: translateY(-5px); */
+    transform: translateY(-5px);
     background-color: #38bdf8;
     border-color: #38bdf8;
     color: #0f172a;
 }
 
+#hero {
+    max-width: 700px; 
+    margin-top: 60px;
+    position: relative;
+}
+
+#hero h1 {
+    font-size: 80px;
+    font-weight: bold;
+    margin: 0, 0, 10px, 0;
+    padding: 0;
+    position: relative;
+}
+
+#title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #38bdf8;
+    margin-top: 12px;
+    border-radius: 2px;
+}
+
+#hero h2 {
+    font-size: 50px;
+    font-weight: lighter;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
 #projects {
     margin-top: 120px;
+}
+
+.project_image_wrapper{
+    width: 100%;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-bottom: 16px;
 }
 
 #projects h2 {
@@ -107,7 +110,7 @@ footer {
 
 .projects_grid{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 30px;
 }
 
@@ -116,6 +119,7 @@ footer {
     border-radius: 8px;
     padding: 24px;
     transition: all 0.2s ease;
+    min-width: 0;
 }
 
 .project_card:hover{
@@ -146,6 +150,8 @@ footer {
     margin-top: 10px;
 }
 
+/* About  */
+
 #about {
     margin-top: 120px;
     max-width: 700px;
@@ -157,19 +163,13 @@ footer {
     margin-bottom: 30px;
 }
 
-#about h2 {
-    font-size: 40px;
-    font-weight: 600;
-    margin-bottom: 30px;
-}
-
-/* #contact {
-    margin-top: 120px;
-} */
+/* Contact */
 
 #contact {
-    margin-top: 60px;
-    padding-top: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    position: relative;
     border-top: 1px solid rgba(255,255,255,0.1);
 }
 
@@ -211,4 +211,52 @@ footer {
     width: 100%;
 }
 
+@media (max-width: 900px) {
 
+  .projects_grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media(max-width: 600px){
+    
+    #hero h1 {
+        font-size: 70px;
+    }
+
+    #hero h2 {
+        font-size: 35px;
+        margin: 20px 0 20px 0;
+    }
+
+    .hero_buttons{
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    #projects {
+        margin-top: 80px;
+    }
+
+    .projects_grid{
+        grid-template-columns: 1fr;
+    }
+
+    #about {
+        margin-top: 80px;
+    }
+
+    #contact {
+        margin-top: 0px;
+        margin-bottom: 40px;
+        padding: 20px 40px;
+    }
+
+    main::before {
+    width: 500px;
+    height: 500px;
+    left: -150px;
+  }
+}
